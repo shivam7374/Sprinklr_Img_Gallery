@@ -27,6 +27,15 @@ let imgData = {
   },
 };
 
+function compute_new_title(title) {
+  if (title.length < 30) {
+    return title;
+  } else {
+    let new_title = title.slice(0, 12) + "..." + title.slice(title.length - 12);
+    return new_title;
+  }
+}
+
 let leftChild = document.querySelector(".child-left");
 let img_title = document.querySelector(".child-right .img-title input");
 img_title.placeholder = imgData["img1"]["title"];
@@ -39,7 +48,7 @@ for (const key in imgData) {
   new_img_left.className = "img-short-left";
   let new_img_right = document.createElement("div");
   new_img_right.className = "img-short-right";
-  new_img_right.innerText = imgData[key]["title"];
+  new_img_right.innerText = compute_new_title(imgData[key]["title"]);
   let img = document.createElement("img");
   img.src = imgData[key]["previewImage"];
   new_img_left.appendChild(img);
