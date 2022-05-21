@@ -44,4 +44,9 @@ for (const key in imgData) {
   new_img.appendChild(new_img_left);
   new_img.appendChild(new_img_right);
   leftChild.appendChild(new_img);
+  new_img.addEventListener("click", () => {
+    console.log("Image clicked : " + key);
+    let img_view = document.querySelector(".child-right .img-view img");
+    img_view.src = imgData[key]["previewImage"];
+  });
 }
