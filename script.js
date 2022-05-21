@@ -28,6 +28,8 @@ let imgData = {
 };
 
 let leftChild = document.querySelector(".child-left");
+let img_title = document.querySelector(".child-right .img-title input");
+img_title.placeholder = imgData["img1"]["title"];
 
 for (const key in imgData) {
   //   console.log(`${key}: ${imgData[key]["title"]}`);
@@ -48,5 +50,10 @@ for (const key in imgData) {
     console.log("Image clicked : " + key);
     let img_view = document.querySelector(".child-right .img-view img");
     img_view.src = imgData[key]["previewImage"];
+  });
+  new_img.addEventListener("click", () => {
+    console.log("Image clicked : " + key);
+    let img_title = document.querySelector(".child-right .img-title input");
+    img_title.placeholder = imgData[key]["title"];
   });
 }
