@@ -80,4 +80,9 @@ input[type="title"]::placeholder {
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
+    background-color: #FFFFFF;
+    /* padding: 5px; */
 }
+.option-selected {
+    background-color: #008080;
+  }

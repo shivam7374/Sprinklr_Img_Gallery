@@ -26,7 +26,13 @@ let imgData = {
     title: "interns-performance-report-may-2022.key",
   },
 };
-
+let imgTitle = [
+  "cat.jpeg",
+  "a man and a woman trying to cook a meal together in a modern kitchen.jpg",
+  "bali-kelingking-beach-plastic-removal-drive.key",
+  "NextByk Investor Pitch 2022.ppt",
+  "interns-performance-report-may-2022.key",
+];
 function compute_new_title(title) {
   if (title.length < 30) {
     return title;
@@ -37,13 +43,20 @@ function compute_new_title(title) {
 }
 
 let leftChild = document.querySelector(".child-left");
-let img_title = document.querySelector(".child-right .img-title input");
-img_title.placeholder = imgData["img1"]["title"];
+
+document.querySelector('input[name="img-title"]').value =
+  imgData["img1"]["title"];
+var flag_selected = 0;
 
 for (const key in imgData) {
   //   console.log(`${key}: ${imgData[key]["title"]}`);
   let new_img = document.createElement("div");
-  new_img.className = "img-short";
+  if (flag_selected === 0) {
+    flag_selected = 1;
+    new_img.className = "img-short option-selected";
+  } else {
+    new_img.className = "img-short";
+  }
   let new_img_left = document.createElement("div");
   new_img_left.className = "img-short-left";
   let new_img_right = document.createElement("div");
@@ -55,14 +68,43 @@ for (const key in imgData) {
   new_img.appendChild(new_img_left);
   new_img.appendChild(new_img_right);
   leftChild.appendChild(new_img);
-  new_img.addEventListener("click", () => {
+  new_img.addEventListener("click", (event) => {
     console.log("Image clicked : " + key);
     let img_view = document.querySelector(".child-right .img-view img");
     img_view.src = imgData[key]["previewImage"];
+    document.querySelector('input[name="img-title"]').value =
+      imgData[key]["title"];
+    select(event);
   });
-  new_img.addEventListener("click", () => {
-    console.log("Image clicked : " + key);
-    let img_title = document.querySelector(".child-right .img-title input");
-    img_title.placeholder = imgData[key]["title"];
+}
+
+let img_Title = document.querySelector('input[name="img-title"]');
+var currentTitle;
+img_Title.addEventListener("click", () => {
+  currentTitle = img_Title.value;
+});
+
+img_Title.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    // code for enter
+    let newImgTitle = imgTitle.forEach((element) => {
+      if (element === currentTitle) {
+        return img_Title.value;
+      }
+    });
+  }
+});
+
+function select(e) {
+  // Unset selected class from other options
+  const selected = document.querySelectorAll(".child-left .option-selected");
+  selected.forEach(function (el) {
+    el.classList.remove("option-selected");
   });
+  console.log(e.target.classList);
+  var x = e.target;
+  while (x.parentElement.classList[0] != "img-short") {
+    x = x.parentElement;
+  }
+  x.parentElement.classList.add("option-selected");
 }
