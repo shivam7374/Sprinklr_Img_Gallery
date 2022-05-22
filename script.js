@@ -90,7 +90,7 @@ img_Title.addEventListener("keypress", function (e) {
     imgTitle[parseInt(currentSelectedIndex)] = newTitle;
     document.querySelector(".child-left").children[
       currentSelectedIndex
-    ].children[1].innerText = newTitle;
+    ].children[1].innerText = compute_new_title(newTitle);
   }
 });
 
