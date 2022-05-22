@@ -33,6 +33,9 @@ let imgTitle = [
   "NextByk Investor Pitch 2022.ppt",
   "interns-performance-report-may-2022.key",
 ];
+
+var currentSelectedIndex = 0;
+
 function compute_new_title(title) {
   if (title.length < 30) {
     return title;
@@ -82,19 +85,19 @@ img_Title.addEventListener("click", () => {
 img_Title.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     // code for enter
-    let newImgTitle = imgTitle.forEach((element) => {
-      if (element === currentTitle) {
-        return img_Title.value;
-      }
-    });
+    console.log("maybe the title changed");
+    var newTitle = document.querySelector('input[name="img-title"]').value;
+    imgTitle[parseInt(currentSelectedIndex)] = newTitle;
+    document.querySelector(".child-left").children[
+      currentSelectedIndex
+    ].children[1].innerText = newTitle;
   }
 });
-var currentSelectedIndex = 0;
+
 function select(e, key, is_keypressed) {
   let img_view = document.querySelector(".child-right .img-view img");
   img_view.src = imgData[key]["previewImage"];
-  document.querySelector('input[name="img-title"]').value =
-    imgData[key]["title"];
+  document.querySelector('input[name="img-title"]').value = imgTitle[key];
   currentSelectedIndex = key;
   console.log("Index of image selected : ", currentSelectedIndex);
   // Unset selected class from other options
