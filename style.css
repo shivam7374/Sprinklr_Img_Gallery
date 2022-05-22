@@ -29,14 +29,18 @@ body{
     height: 95%;
     background-color: yellow;
     border-radius: 1%;
+    overflow: hidden;
 }
 .img-view img{
     width: 500px;
     height: 100%;
     background-color: antiquewhite;
-    border-radius: 1%;
+    border-radius: 1%;   
 }
-
+.img-view img:hover{
+  transition: 0.3s;
+    transform: scale(1.2);      
+}
 input[type="title"]::placeholder { 
     text-align: center;
     border: 0;
@@ -45,12 +49,19 @@ input[type="title"]::placeholder {
 }
 .img-title{
     height: 4%;
-    display: flex;
+    width: 500px;
     justify-content: center;
 }
 .img-title-inp{
     height: 100%;
-    width: 90%;
+    width: 100%;
+    text-align: center;
+    border: 0;
+}
+
+.img-view-inp{
+    height: 100%;
+    width: 100%;
     text-align: center;
     border: 0;
 }
@@ -62,6 +73,18 @@ input[type="title"]::placeholder {
     height: 7%;
     float: left;
     padding: 1%;
+}
+.img-short-left span {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+}
+.img-short-left:hover span {
+    top: 1%;
+    left: 1%;
+    width: 250px;
+    height: 250px;
+    transition: all 0.5s linear;
 }
 
 .img-short-left{

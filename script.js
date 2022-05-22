@@ -32,6 +32,8 @@ function setDataToHTML(key) {
     new_img.className = "img-short option-selected";
     document.querySelector('input[name="img-title"]').value =
       imgData[key]["title"];
+    document.querySelector('input[name="img-view-link"]').value =
+      imgData[key]["previewImage"];
   } else {
     new_img.className = "img-short";
   }
@@ -44,11 +46,16 @@ function setDataToHTML(key) {
   // calculate the title according to syntax abc..xyz
   new_img_right.innerText = compute_new_title(imgData[key]["title"]);
   // image element of the left side
-  let img = document.createElement("img");
-  img.src = imgData[key]["previewImage"];
+  let img1 = document.createElement("img");
+  img1.src = imgData[key]["previewImage"];
+  let img2 = document.createElement("img");
+  img2.src = imgData[key]["previewImage"];
 
+  let imgSpan = document.createElement("span");
   // append the elements to provide perfect orientation
-  new_img_left.appendChild(img);
+  imgSpan.appendChild(img2);
+  new_img_left.appendChild(img1);
+  new_img_left.appendChild(imgSpan);
   new_img.appendChild(new_img_left);
   new_img.appendChild(new_img_right);
   leftChild.appendChild(new_img);
@@ -66,6 +73,8 @@ function select(e, key, is_keypressed) {
   img_view.src = imgData[key]["previewImage"];
   // update the title to the left
   document.querySelector('input[name="img-title"]').value = imgTitle[key];
+  document.querySelector('input[name="img-view-link"]').value =
+    imgData[key]["previewImage"];
   //update the current index of image
   currentSelectedIndex = key;
   console.log("Index of image selected : ", currentSelectedIndex);
@@ -97,7 +106,7 @@ function changeSelectedBackground(e, is_keypressed) {
 }
 
 let img_Title = document.querySelector('input[name="img-title"]');
-
+let img_Link = document.querySelector('input[name="img-view-link"]');
 // add event listener for title change and upadate to left side along with the database of imgTitle
 img_Title.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
@@ -109,6 +118,26 @@ img_Title.addEventListener("keypress", function (e) {
     document.querySelector(".child-left").children[
       currentSelectedIndex
     ].children[1].innerText = compute_new_title(newTitle);
+  }
+});
+
+img_Link.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    // code for enter
+    console.log("maybe the link changed");
+    var newLink = document.querySelector('input[name="img-view-link"]').value;
+    // current index tracks the image to be shown
+    imgData[parseInt(currentSelectedIndex)]["previewImage"] = newLink;
+    // updating image element
+    document.querySelector(".child-left").children[
+      currentSelectedIndex
+    ].children[0].children[0].src = newLink;
+    // updating the span element
+    document.querySelector(".child-left").children[
+      currentSelectedIndex
+    ].children[0].children[1].children[0].src = newLink;
+    let img_view = document.querySelector(".child-right .img-view img");
+    img_view.src = imgData[currentSelectedIndex]["previewImage"];
   }
 });
 
