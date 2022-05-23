@@ -7,7 +7,7 @@
 ## Additional Functionalities :
 
 1. Right Panel Image Zoom on Hover.
-2. Left Side Image view on Hover for just a gilmpse of a medium sized image( Better experience in full screen view).
+2. Left Side Image view on Hover for just a glimpse of a medium sized image( Better experience in full screen view).
 3. Image link can also be edited along with the title and the image gets loaded instantly based on the updated link entered.
 
 ## Features Assigned to be done :
