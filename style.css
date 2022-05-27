@@ -82,8 +82,8 @@ input[type="title"]::placeholder {
 .img-short-left:hover span {
     top: 1%;
     left: 1%;
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: 100px;
     transition: all 0.5s linear;
 }
 
@@ -96,6 +96,7 @@ input[type="title"]::placeholder {
     width: 100%;
     height: 100%;
     float: left;
+    border-radius: 10%;
   }
 .img-short-right{
     height: 100%;

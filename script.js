@@ -22,10 +22,13 @@ for (const key in imgData) {
 }
 
 // set data to HTML in a organised manner
+var is_vertical;
 function setDataToHTML(key) {
   console.log(`${key}: ${imgData[key]["title"]}`);
   // create new conaier for the img to be added
   let new_img = document.createElement("div");
+  is_vertical = 0;
+  is_vertical = parseInt(imgData[key]["vertical"]);
   if (flag_selected === 0) {
     flag_selected = 1;
     // if intial no image selected so view the title in the input view of title
@@ -50,7 +53,9 @@ function setDataToHTML(key) {
   img1.src = imgData[key]["previewImage"];
   let img2 = document.createElement("img");
   img2.src = imgData[key]["previewImage"];
-
+  if (is_vertical) {
+    img1.style.width = "70%";
+  }
   let imgSpan = document.createElement("span");
   // append the elements to provide perfect orientation
   imgSpan.appendChild(img2);
