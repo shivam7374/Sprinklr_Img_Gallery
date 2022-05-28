@@ -166,3 +166,13 @@ document.addEventListener("keydown", (event) => {
     }
   }
 });
+
+window.addEventListener(
+  "keydown",
+  function (e) {
+    if (["ArrowUp", "ArrowDown"].indexOf(e.code) > -1) {
+      e.preventDefault();
+    }
+  },
+  false
+);
