@@ -114,16 +114,13 @@ let img_Title = document.querySelector('input[name="img-title"]');
 let img_Link = document.querySelector('input[name="img-view-link"]');
 // add event listener for title change and upadate to left side along with the database of imgTitle
 img_Title.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    // code for enter
-    console.log("maybe the title changed");
-    var newTitle = document.querySelector('input[name="img-title"]').value;
-    // current index tracks the image to be shown
-    imgTitle[parseInt(currentSelectedIndex)] = newTitle;
-    document.querySelector(".child-left").children[
-      currentSelectedIndex
-    ].children[1].innerText = compute_new_title(newTitle);
-  }
+  console.log("maybe the title changed");
+  var newTitle = document.querySelector('input[name="img-title"]').value;
+  // current index tracks the image to be shown
+  imgTitle[parseInt(currentSelectedIndex)] = newTitle;
+  document.querySelector(".child-left").children[
+    currentSelectedIndex
+  ].children[1].innerText = compute_new_title(newTitle);
 });
 
 img_Link.addEventListener("keypress", function (e) {
