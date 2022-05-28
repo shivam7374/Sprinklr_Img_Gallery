@@ -18,3 +18,9 @@
 4. Title should be form abc...xyz in case of large length in left panel.
 5. The application should be center of the page.
 6. The title must be editable from the right panel and should also reflect in the left panel.
+
+## Improvements Made :
+
+1. The images are now presented in the left panel according to whether they are in portrait or landscape mode .
+2. The scroll on browser disabled when the pressing arrow up and down key were used for navigation among images.
+3. The image title instantaneous update to left panel.
