@@ -11,7 +11,7 @@ function compute_new_title(title) {
     return title;
   } else {
     // in case length is greater than 30 characters than take first 12 characters and last 12 characters
-    let new_title = title.slice(0, 12) + "..." + title.slice(title.length - 12);
+    let new_title = title.slice(0, 12) + "..." + title.slice(title.length - 8);
     return new_title;
   }
 }
@@ -113,8 +113,13 @@ function changeSelectedBackground(e, is_keypressed) {
 let img_Title = document.querySelector('input[name="img-title"]');
 let img_Link = document.querySelector('input[name="img-view-link"]');
 // add event listener for title change and upadate to left side along with the database of imgTitle
-img_Title.addEventListener("keypress", function (e) {
-  console.log("maybe the title changed");
+img_Title.addEventListener("keyup", function (e) {
+  console.log(
+    // "the title changed to : " +
+    //   document.querySelector('input[name="img-title"]').value +
+    e
+  );
+
   var newTitle = document.querySelector('input[name="img-title"]').value;
   // current index tracks the image to be shown
   imgTitle[parseInt(currentSelectedIndex)] = newTitle;
@@ -123,7 +128,7 @@ img_Title.addEventListener("keypress", function (e) {
   ].children[1].innerText = compute_new_title(newTitle);
 });
 
-img_Link.addEventListener("keypress", function (e) {
+img_Link.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     // code for enter
     console.log("maybe the link changed");
